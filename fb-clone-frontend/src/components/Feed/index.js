@@ -1,13 +1,14 @@
 import React from 'react';
-
-import './Feed.scss';
+import StoryReel from '../StoryReel';
+import MessageSender from '../MessageSender';
+import './Feed.css';
 
 function Feed() {
     return (
-        <div>
+        <div className="feed">
           <StoryReel />
           <MessageSender />
-          {
+          {/*
             postsData.map(entry => (
                 <Post
                   profilePic={entry.avatar}
@@ -17,7 +18,7 @@ function Feed() {
                   username={entry.user}
                 />
             ))
-          }
+            */}
         </div>
     );
 };
