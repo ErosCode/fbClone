@@ -9,20 +9,21 @@ import path from 'path';
 import Pusher from 'pusher';
 import mongoPosts from './Models/post.js';
 // import my database connection url by an hidden file
-import { DB_CONNECT } from './dbInfos.js'
+import dotenv from 'dotenv';
 
+dotenv.config();
 Grid.mongo = mongoose.mongo;
 
 // App Config
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT;
 
 //middlewares
 app.use(bodyParser.json());
 app.use(cors());
 
 // db config
-const mongoURI = DB_CONNECT;
+const mongoURI = process.env.DB_CONNECT;
 const conn = mongoose.createConnection(mongoURI, {
     useCreateIndex: true,
     useNewUrlParser: true,
