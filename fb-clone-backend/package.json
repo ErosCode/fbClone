@@ -5,7 +5,8 @@
   "main": "server.js",
   "type": "module",
   "engines": {
-    "node": "12.18.3"
+    "node": "12.18.3",
+    "npm": ">=3.9.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
