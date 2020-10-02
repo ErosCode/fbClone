@@ -1,0 +1,10 @@
+{
+    "name": "fb-clone-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "type": "module",
+    "engines": {
+      "node": "12.18.3"
+    }
+}
