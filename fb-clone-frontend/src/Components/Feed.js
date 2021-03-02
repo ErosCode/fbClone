@@ -8,6 +8,10 @@ import Pusher from 'pusher-js'
 
 import db from '../firebase'
 
+const pusher = new Pusher('8d98de18867102299b91', {
+    cluster: 'eu'
+  });
+
 const Feed = () => {
     const [profilePic, setProfilePic] = useState('')
     const [postsData, setPostsData] = useState([])
@@ -19,6 +23,13 @@ const Feed = () => {
                 setPostsData(res.data);
             })
     }
+
+    useEffect(() => {
+        const channel = pusher.subscribe('posts');
+        channel.bind('inserted', function(data) {
+          syncFeed();
+        });
+    }, [])
 
     useEffect(() => {
         syncFeed();

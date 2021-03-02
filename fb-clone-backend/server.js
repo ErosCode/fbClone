@@ -38,6 +38,22 @@ mongoose.connect(mongoURI, {
 
 mongoose.connection.once('open', () => {
     console.log('DB connected')
+    
+    const changeStream = mongoose.connection.collection('posts').watch()
+
+    changeStream.on('change', (change) => {
+        console.log(change)
+
+        if (change.operationType === 'insert') {
+            console.log('Triggering Pusher')
+
+            pusher.trigger('posts', 'inserted', {
+                change: change
+            })
+        } else {
+            console.log('Error triggering Pusher')
+        }
+    })
 })
 
 let gfs
@@ -65,6 +81,16 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage })
 
+
+const pusher = new Pusher({
+    appId: "1165109",
+    key: "8d98de18867102299b91",
+    secret: "ef6aa250c8fed2600ba8",
+    cluster: "eu",
+    useTLS: true
+  });
+
+  
 //api routes
 app.get("/", (req, res) => res.status(200).send("Hello World"));
 
