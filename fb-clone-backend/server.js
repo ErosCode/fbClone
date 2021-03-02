@@ -8,8 +8,7 @@ import Grid from "gridfs-stream"
 import bodyParser from "body-parser"
 import path from "path"
 import Pusher from "pusher"
-import mongoPost from "./mongoPosts"
-import mongoPosts from "./mongoPosts"
+import mongoPosts from "./mongoPosts.js"
 
 Grid.mongo = mongoose.mongo
 

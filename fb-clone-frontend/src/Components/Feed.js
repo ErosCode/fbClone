@@ -12,10 +12,16 @@ const Feed = () => {
     const [profilePic, setProfilePic] = useState('')
     const [postsData, setPostsData] = useState([])
 
+    const syncFeed = () => {
+        axios.get('/retrieve/posts')
+            .then((res) => {
+                console.log('posts?', res.data)
+                setPostsData(res.data);
+            })
+    }
+
     useEffect(() => {
-        db.collection('posts').onSnapshot(snapshot => (
-            setPostsData(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })))
-        ))
+        syncFeed();
     }, [])
 
     return (
