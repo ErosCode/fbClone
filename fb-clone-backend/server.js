@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //db config
-const mongoURI = "mongodb+srv://admin:FkoluieUgPdjO2y6@cluster0.3w2hv.mongodb.net/fbClone?retryWrites=true&w=majority"
+const mongoURI = process.env.mongoURI;
 
 const conn = mongoose.createConnection(mongoURI, {
     useCreateIndex: true,
