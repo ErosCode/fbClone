@@ -100,5 +100,19 @@ app.get("/retrieve/image/single", (req, res) => {
     })
 })
 
+app.get("/retrieve/posts", (req, res) =>{
+    mongoPosts.find((err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            data.sort((b, a) => {
+                return a.timestamp - b.timestamp;
+            })
+
+            res.status(200).send(data)
+        }
+    })
+})
+
 //listen
 app.listen(port, () => console.log(`listening on localhost:${port}`));
