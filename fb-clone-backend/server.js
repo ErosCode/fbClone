@@ -15,7 +15,7 @@ Grid.mongo = mongoose.mongo
 
 // app config
 const app = express()
-const port = process.env.port
+const PORT = process.env.PORT
 
 // middlewares
 app.use(bodyParser.json());
@@ -140,4 +140,4 @@ app.get("/retrieve/posts", (req, res) =>{
 })
 
 //listen
-app.listen(port, () => console.log(`listening on localhost:${port}`));
+app.listen(PORT, () => console.log(`listening on localhost:${PORT}`));
