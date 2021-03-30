@@ -25,7 +25,7 @@ const Post = ({ profilePic, imgName, username, timestamp, message }) => {
             {
                 imgName ? (
                     <div className="post__image">
-                        <img src={`/retrieve/image/single?name=${imgName}`} />
+                        <img src={`https://fb-clone-heroku-backend.herokuapp.com/retrieve/image/single?name=${imgName}`} />
                     </div>
                 ) : (
                         console.log('DEBUG >>> no image here')
