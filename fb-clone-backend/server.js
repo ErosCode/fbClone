@@ -15,7 +15,7 @@ Grid.mongo = mongoose.mongo
 
 // app config
 const app = express()
-const port = process.env.port || 9000
+const port = process.env.port
 
 // middlewares
 app.use(bodyParser.json());
